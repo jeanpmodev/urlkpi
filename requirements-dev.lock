@@ -13,8 +13,18 @@
 asgiref==3.11.1
     # via django
 django==6.0.3
+    # via django-extensions
+    # via local
+django-extensions==4.1
+    # via local
+graphviz==0.21
     # via local
 pycodestyle==2.14.0
     # via local
+pydot==4.0.1
+    # via local
+pyparsing==3.3.2
+    # via local
+    # via pydot
 sqlparse==0.5.5
     # via django

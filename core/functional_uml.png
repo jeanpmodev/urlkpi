@@ -1,0 +1,8 @@
+# generate dot function 
+python3 manage.py graph_models -a -g --dot -o uml.dot
+
+# generate image from source dot file 
+dot -Tpng uml.dot -ouml.png 
+
+#task : set folder and name based from id , connect to database  
+

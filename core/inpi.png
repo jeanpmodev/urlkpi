@@ -1,0 +1,8 @@
+No Brasil, um arquivo .dot (ou qualquer código-fonte/arquivo de software) não é patenteável por si só, mas pode ser protegido através do Registro de Programa de Computador no INPI. 
+
+Aqui estão os pontos chave sobre a proteção de softwares no Brasil:
+Direito Autoral (Registro de Software): Softwares são protegidos pela Lei de Software (Lei nº 9.609/1998) como obras literárias, focando no código-fonte e protegendo contra cópia literal.
+Patente de Invenção (Invenções Implementadas em Computador - IIC): O software pode ser patenteado se ele for parte de um processo que resolva um problema técnico de forma inovadora e envolva hardware (uma "invenção implementada em computador"). O código puro não é patenteável, mas o processo técnico que ele realiza pode ser.
+Registro no INPI: O registro é feito através do portal e-INPI e garante prova de autoria por 50 anos, sendo recomendado o uso de resumo hash (SHA-512) para aumentar a segurança jurídica. 
+
+Portanto, para o arquivo .dot, o caminho adequado é o registro de direito autoral no INPI, a menos que ele faça parte de uma solução técnica complexa que funcione diretamente com um hardware.
