@@ -12,6 +12,10 @@
 -e file:.
 asgiref==3.11.1
     # via django
+certifi==2026.5.20
+    # via requests
+charset-normalizer==3.4.7
+    # via requests
 django==6.0.3
     # via django-extensions
     # via local
@@ -19,6 +23,12 @@ django-extensions==4.1
     # via local
 graphviz==0.21
     # via local
+idna==3.16
+    # via requests
+mwclient==0.11.0
+    # via local
+oauthlib==3.3.1
+    # via requests-oauthlib
 pycodestyle==2.14.0
     # via local
 pydot==4.0.1
@@ -26,5 +36,11 @@ pydot==4.0.1
 pyparsing==3.3.2
     # via local
     # via pydot
+requests==2.34.2
+    # via requests-oauthlib
+requests-oauthlib==2.0.0
+    # via mwclient
 sqlparse==0.5.5
     # via django
+urllib3==2.7.0
+    # via requests

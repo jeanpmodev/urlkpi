@@ -93,3 +93,7 @@ def uml(request):
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def copy(request):
+    pass
