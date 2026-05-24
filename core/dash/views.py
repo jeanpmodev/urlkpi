@@ -84,10 +84,6 @@ def pyerrors(request):
 def uml(request):
     if request.user.is_authenticated:
         context = {
-            'error_amount': error_amount,
-            'list_error_files': list_error_files,
-            'result': result,
-            'error_spec' : error_spec,
         }
         template = loader.get_template("dash/uml.html")
         return HttpResponse(template.render(context, request))
@@ -96,4 +92,11 @@ def uml(request):
 
 
 def copy(request):
-    pass
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/copy.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
