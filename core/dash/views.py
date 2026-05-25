@@ -67,25 +67,12 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def pyerrors(request):
+def boiler(request):
     if request.user.is_authenticated:
-        context = {
-            'error_amount': error_amount,
-            'list_error_files': list_error_files,
-            'result': result,
-            'error_spec' : error_spec,
-        }
-        template = loader.get_template("dash/pyerrors.html")
-        return HttpResponse(template.render(context, request))
-    else:
-        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
-
-def uml(request):
-    if request.user.is_authenticated:
         context = {
         }
-        template = loader.get_template("dash/uml.html")
+        template = loader.get_template("dash/boiler.html")
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
@@ -100,3 +87,83 @@ def copy(request):
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def tracking(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/tracking.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def filemanager(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/filemanager.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def pyerrors(request):
+    if request.user.is_authenticated:
+        context = {
+            'error_amount': error_amount,
+            'list_error_files': list_error_files,
+            'result': result,
+            'error_spec' : error_spec,
+        }
+        template = loader.get_template("dash/pyerrors.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def plagiarism(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/plagiarism.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def integrity(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/integrity.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def tests(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/tests.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def uml(request):
+    if request.user.is_authenticated:
+        context = {
+        }
+        template = loader.get_template("dash/uml.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
