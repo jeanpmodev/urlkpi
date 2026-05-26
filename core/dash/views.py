@@ -149,11 +149,16 @@ def integrity(request):
 
 def tests(request):
     if request.user.is_authenticated:
+        try:
+            output = subprocess.check_output(['behave'], stderr=subprocess.STDOUT, text=True)
+        except subprocess.CalledProcessError as e:
+            output = e.output 
 
         context = {
         }
-        template = loader.get_template("dash/tests.html")
-        return HttpResponse(template.render(context, request))
+        #template = loader.get_template("dash/tests.html")
+        return render(request, 'dash/tests.html', {'test_output': output})
+        #return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
