@@ -59,7 +59,7 @@
    <div class="bg-white py-24 sm:py-32">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:text-center">
-      <h2 class="text-base/7 font-semibold text-indigo-600">Tests post</h2>
+      <h2 class="text-base/7 font-semibold text-indigo-600">Tests behaves</h2>
       <p class="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl lg:text-balance">Tests faster</p>
       <p class="mt-6 text-lg/8 text-gray-700">
 Django Octo offers a simple and intuitive way to perform your software tests.</p>
@@ -110,47 +110,20 @@ Django Octo offers a simple and intuitive way to perform your software tests.</p
           </dt>
           <dd class="mt-2 text-base/7 text-gray-600">Simplified submission of your file to the rights and licensing database.</dd>
         </div>
-              <section id="sharesection" class="content-center mx-8" style="margin-bottom: 2%; margin-top: 1%;">
+<section  class="content-center mx-8" style="margin-bottom: 2%; margin-top: 1%;">
         
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th ><h6 class="text-1xl font-bold tracking-tight text-orange">Test id</h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">Type </h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">amount</h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">avg time </h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">run </h6></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td class="rounded-md">1</td>
-              <td class="rounded-md">Unit</td>
-              <td class="rounded-md">55</td>
-              <td class="rounded-md">35s</td>
-              <td class="rounded-md">RUN ⬇️</td>
-            </tr>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td>2</td>
-              <td>behave</td>
-              <td>88</td>
-              <td>40s</a></td>
-              <td class="rounded-md">RUN ⬇️</td>
+<form id="testForm" method="POST" action="{% url 'tests' %}">
+  {% csrf_token %}
+  {% for test in files %}
+  <ul class="list-inside bg-blue-500 rounded-md hover:scale-120 " style="margin-bottom: 2%; margin-top: 1%;" >
+    <button type="submit" name="{{test}}" class="btn">
+        Run {{test}}
+    </button>
+  </ul> 
+  {% endfor %}
+</form>
 
-
-            </tr>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td>3</td>
-              <td>behave</td>
-              <td>88</td>
-              <td>40s</a></td>
-              <td class="rounded-md">RUN ⬇️</td>
-
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
+</section>
       </dl>
       <section>
    <h2>Tests Output</h2>
@@ -162,6 +135,11 @@ Django Octo offers a simple and intuitive way to perform your software tests.</p
     </div>
   </div>
 </div>
+
+<section>
+
+</section>
+
 
  </section>
 

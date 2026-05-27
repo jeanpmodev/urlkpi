@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from .models import Task
 import subprocess
@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 import os
 import pycodestyle
 import time
+from pathlib import Path
 
 
 error_amount = 0
@@ -148,17 +149,25 @@ def integrity(request):
 
 
 def tests(request):
-    if request.user.is_authenticated:
+    behave_folder = Path('features/')
+    files = [file.name for file in behave_folder.iterdir() if file.is_file()]
+    if request.method == 'POST':
+        test_name = list(request.POST.keys())[1]
+        test_path = os.path.abspath("features/"+test_name)
         try:
-            output = subprocess.check_output(['behave'], stderr=subprocess.STDOUT, text=True)
+            output = subprocess.check_output(['behave', test_path], stderr=subprocess.STDOUT, text=True)
         except subprocess.CalledProcessError as e:
             output = e.output 
-
         context = {
         }
-        #template = loader.get_template("dash/tests.html")
-        return render(request, 'dash/tests.html', {'test_output': output})
-        #return HttpResponse(template.render(context, request))
+        return render(request, 'dash/tests.html', {
+            'test_output': output,
+            'files': files,
+        })
+    if request.user.is_authenticated:
+        return render(request, 'dash/tests.html', {
+            'files': files,
+        })
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
