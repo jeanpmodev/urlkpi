@@ -150,7 +150,7 @@ def integrity(request):
 
 def tests(request):
     behave_folder = Path('features/')
-    files = [file.name for file in behave_folder.iterdir() if file.is_file()]
+    behave_files = [file.name for file in behave_folder.iterdir() if file.is_file()]
     if request.method == 'POST':
         test_name = list(request.POST.keys())[1]
         test_path = os.path.abspath("features/"+test_name)
@@ -162,11 +162,11 @@ def tests(request):
         }
         return render(request, 'dash/tests.html', {
             'test_output': output,
-            'files': files,
+            'behave_files': behave_files,
         })
     if request.user.is_authenticated:
         return render(request, 'dash/tests.html', {
-            'files': files,
+            'behave_files': behave_files,
         })
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')

@@ -1,4 +1,4 @@
-Feature: how to conduct behavioral tests
+Feature: how to conduct behavioral tests 1
 
   Scenario: select a specific test 1
      Given you installed Django Octo 1.

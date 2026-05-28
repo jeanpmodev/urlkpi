@@ -1,7 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-<title> await </title>
+<title> Django Octo Dashboard </title>
 <head>
 <meta charset="UTF-8" />    <meta name="viewport" content="width=device-width, initial-scale=1.0" />   
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -12,100 +12,7 @@
   <html class="h-full bg-gray-900">
   <body class="h-full">
 <div class="min-h-full">
-  <nav class="bg-gray-800/50">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="flex h-16 items-center justify-between">
-        <div class="flex items-center">
-          <div class="shrink-0">
-            <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" class="size-8" />
-          </div>
-          <div class="hidden md:block">
-            <div class="ml-10 flex items-baseline space-x-4">
-              <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-              <a href="#" aria-current="page" class="rounded-md bg-gray-950/50 px-3 py-2 text-sm font-medium text-white">Dashboard</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Team</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a>
-              <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Reports</a>
-            </div>
-          </div>
-        </div>
-        <div class="hidden md:block">
-          <div class="ml-4 flex items-center md:ml-6">
-            <button type="button" class="relative rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-              <span class="absolute -inset-1.5"></span>
-              <span class="sr-only">View notifications</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-                <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            </button>
 
-            <!-- Profile dropdown -->
-            <el-dropdown class="relative ml-3">
-              <button class="relative flex max-w-xs items-center rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">Open user menu</span>
-                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-8 rounded-full outline -outline-offset-1 outline-white/10" />
-              </button>
-
-              <el-menu anchor="bottom end" popover class="w-48 origin-top-right rounded-md bg-gray-800 py-1 outline-1 -outline-offset-1 outline-white/10 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
-                <a href="#" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Your profile</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Settings</a>
-                <a href="#" class="block px-4 py-2 text-sm text-gray-300 focus:bg-white/5 focus:outline-hidden">Sign out</a>
-              </el-menu>
-            </el-dropdown>
-          </div>
-        </div>
-        <div class="-mr-2 flex md:hidden">
-          <!-- Mobile menu button -->
-          <button type="button" command="--toggle" commandfor="mobile-menu" class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-white/5 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-            <span class="absolute -inset-0.5"></span>
-            <span class="sr-only">Open main menu</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-              <path d="M6 18 18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <el-disclosure id="mobile-menu" hidden class="block md:hidden">
-      <div class="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-        <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-        <a href="#" aria-current="page" class="block rounded-md bg-gray-950/50 px-3 py-2 text-base font-medium text-white">Dashboard</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Team</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Projects</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Calendar</a>
-        <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-white/5 hover:text-white">Reports</a>
-      </div>
-      <div class="border-t border-white/10 pt-4 pb-3">
-        <div class="flex items-center px-5">
-          <div class="shrink-0">
-            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="size-10 rounded-full outline -outline-offset-1 outline-white/10" />
-          </div>
-          <div class="ml-3">
-            <div class="text-base/5 font-medium text-white">Octo Carlos Independentes</div>
-            <div class="text-sm font-medium text-gray-400">octo@urlkpi.com</div>
-          </div>
-          <button type="button" class="relative ml-auto shrink-0 rounded-full p-1 text-gray-400 hover:text-white focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500">
-            <span class="absolute -inset-1.5"></span>
-            <span class="sr-only">View notifications</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
-              <path d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-          </button>
-        </div>
-        <div class="mt-3 space-y-1 px-2">
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Your profile</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Settings</a>
-          <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-white/5 hover:text-white">Sign out</a>
-        </div>
-      </div>
-    </el-disclosure>
-  </nav>
 
   <header class="relative bg-gray-800 after:pointer-events-none after:absolute after:inset-x-0 after:inset-y-0 after:border-y after:border-white/10">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -135,7 +42,7 @@
     <a href="http://127.0.0.1:8000/dash/copy/">
     <div><h1 class="text-3xl font-bold tracking-tight text-white">Copyright</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div></a>
      <a href="http://127.0.0.1:8000/dash/plagiarism/">
-    <div><h1 class="text-3xl font-bold tracking-tight text-white">plagiarism</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div></a>
+    <div><h1 class="text-3xl font-bold tracking-tight text-white">Plagiarism</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div></a>
     <div><h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div>
     <div><h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div>
     <div><h1 class="text-3xl font-bold tracking-tight text-white">Dashboard</h1><img class="rounded-lg" src="{% static 'dash/pizza.png' %}" alt="HTML5 Icon" > </div>
@@ -152,89 +59,10 @@
 
 </section>
 
-                  <section id="sharesection" class="content-center mx-8" style="margin-bottom: 2%; margin-top: 3%;">
+{% include "dash/partners.html" %} 
+{% include "dash/footer.html" %}   
+{% include "dash/sharesection.html" %}
 
-                    <div class="grid grid-cols-8 grid-rows-1 gap-3" style="text-align: center">
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro facebook sharing button" rel="facebookshare" href="https://web.archive.org/web/20250420005523/https://www.facebook.com/sharer/sharer.php?u=https://readtime.pro/"><ion-icon style="color: #881337;" name="logo-facebook" size="large"></ion-icon></a></div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro reddit sharing button" rel="redditshare" href="https://web.archive.org/web/20250420005523/https://www.reddit.com/submit?title=readtimepro%20url%20time%20reading%20tech%20&amp;url=https://readtime.pro/"><ion-icon style="color: #881337;" name="logo-reddit" size="large"></ion-icon></a></div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro pinterest make pin sharing button" rel="pinterestshare" href="https://web.archive.org/web/20250420005523/https://www.pinterest.com/pin/create/button/?url=https://readtime.pro/" target="_blank"><ion-icon style="color: #881337;" name="logo-pinterest" size="large"></ion-icon></a></div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro twitter sharing button" rel="twittershare" href="https://web.archive.org/web/20250420005523/https://twitter.com/intent/tweet?text=readtimepro%20url%20time%20reading%20tech%20%20https://readtime.pro/"><ion-icon style="color: #881337;" name="logo-twitter" size="large"></ion-icon></a></div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro whatsapp sharing button" rel="whatsappshare" href="https://web.archive.org/web/20250420005523/https://api.whatsapp.com/send?text=https://readtime.pro/"><ion-icon style="color: #881337;" name="logo-whatsapp" size="large"></ion-icon></a> </div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro github profile button" rel="githushare" href="https://web.archive.org/web/20250420005523/https://github.com/jeancarlosti"><ion-icon style="color: #881337;" name="logo-github" size="large"></ion-icon></a></div>
-                      <div class="hover:scale-125 hover:shadow-lg"><a title="readtimepro linkedin sharing button" href="https://web.archive.org/web/20250420005523/https://www.linkedin.com/shareArticle?mini=true&amp;url=https://readtime.pro/"><ion-icon style="color: #881337;" name="logo-linkedin" size="large"></a></div>
-                        <div class="hover:scale-125 hover:shadow-lg flex justify-center"><a title="readtimepro telegram sharing button" rel="telegramshare" href="https://web.archive.org/web/20250420005523/https://t.me/share/url?text=readtimepro%20url%20time%20reading%20tech%20&amp;url=https://readtime.pro/" title="Telegram Messenger LLP, Public domain, via Wikimedia Commons" href="https://web.archive.org/web/20250420005523/https://commons.wikimedia.org/wiki/File:Telegram_logo.svg"><svg fill="#881337" width="32px" height="32px" viewbox="-2.4 -2.4 28.80 28.80" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.344"></g><g id="SVGRepo_iconCarrier"><path d="m12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12c0-6.627-5.373-12-12-12zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"></path></g></svg></a></div>
-                      </div>
-
-                    </section>
-
-                    <section class="relative isolate overflow-hidden  px-6 py-24 sm:py-32 lg:px-8">
-
-                      <section class=" grid grid-cols-1 grid-rows-1 gap-0 mx-1">
-                       <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl text-center mt-2 py-2"><span style="color: green">Services</span> </h2>
-                     </section>
-                     <div class="transition ease-in-out delay-200 hover:-translate-y-1 footerGrid grid rounded-md grid-cols-2 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-rows-2 gap-3">
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="cloud-download-outline"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/sitemaps-to-txt/en/" title="sitemaps to txt free service button"><span class="text-green-900"> free</span> sitemaps to txt </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="shield-checkmark-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/check-security/en/" title="readtimepro TSL security checker button"><span class="text-green-900"> free</span> TSL security checker </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="logo-markdown"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/markdown-to-pdf/en/" title="readtimepro markdown to pdf saas button"><span class="text-green-900"> free</span> markdown to pdf </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="document-text-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/sitemaps-txt-to-xml/en/" title="readtimepro sitemaps txt to xml saas button"><span class="text-green-900"> free</span> sitemaps txt to xml </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="heart-circle-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/sentimental-analytics/en/" title="readtimepro sentimental analytics saas button"><span class="text-green-900"> free</span> sentimental analytics </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="at-circle-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-mail-digger/en" title="readtimepro url mail digger saas button"><span class="text-green-900"> free</span> url mail digger </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="link"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-link-digger/en/" title="readtimepro url link digger saas button"><span class="text-green-900"> free</span> url link digger </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="images-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-image-digger/en/" title="readtimepro url images digger saas button"><span class="text-green-900"> free</span> url image digger </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="qr-code-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-qrcode-generator/en/" title="readtimepro url qrcode generator saas button"><span class="text-green-900"> free</span> url qrcode generator </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="alarm-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-reading-time/en/" title="readtimepro url averange reading spend time saas button"><span class="text-green-900"> free</span> url reading time </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="text-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-most-common-words/en/" title="readtimepro url averange reading spend time saas button"><span class="text-green-900"> free</span> url most common words </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="code-slash-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-html-struct-counter/en/" title="readtimepro url html strutcs counter saas button"><span class="text-green-900"> free</span> url html structs counter </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="share-social-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-share-builder/en/" title="readtimepro url html strutcs counter saas button"><span class="text-green-900"> free</span> url share buttons builder </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="help-circle-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/url-whois-checker/en/" title="readtimepro url whois checker saas button"><span class="text-green-900"> free</span> url whois checker </a></div>
-                      <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="musical-notes-outline"></ion-icon><a class="px-3 py-2 animate-bounce" href="https://web.archive.org/web/20250420005523/https://readtime.pro/text-to-speech/en/" title="readtimepro text to speech saas button"><span class="text-green-900"> free</span> text to speech </a></div>
-
-
-                    </div>
-                    <section class=" grid grid-cols-1 grid-rows-1 gap-0 mx-1 ">
-                     <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl text-center mt-2 py-2"><span style="color: green">Links</span> </h2>
-                   </section>
-
-                   <script type="module" src="https://web.archive.org/web/20250420005523jm_/https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-                   <script nomodule src="https://web.archive.org/web/20250420005523js_/https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-                   <div class="footerGrid grid rounded-md grid-cols-2 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-rows-3 gap-3">
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="alarm-outline"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/about/" title="about readtimepro technology button"> about readtimepro technology </a></div>
-                    <div title="readtimepro - reading url time reports official button" class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="book"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/"> readtimepro </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="reload-outline"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/change-log/" title="readtimepro features page button"> change log </a></div>
-                    <div title="readtimepro - reading url time reports official button" class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="book"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readmysite.com/"> readmysite </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-3 row-start-3"><ion-icon name="mail"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/mailto:admin@readmysite.com" title="readtimepro mail contact button"> contact us </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-2 row-start-3"><ion-icon name="list-outline"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/latest/" title="readtimepro latest reports button"> last readed pages </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="book"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readmyurl.com/" title="readmyurl button"> readmyurl </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="thumbs-up"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/terms-and-conditions/" title="readtimepro legal advice button"> terms and conditions </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="layers"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://stackshare.io/readtime-pro/readtime-pro" title="readtimepro stackshare button"> stackshare techs </a></div>
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="document-text-outline"></ion-icon> <a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/static/sitemapsreadtimepro.xml" title="sitemaps of readtimepro - reading url time reports">sitemap </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="bug-outline"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://readtime.pro/bug-fix/" title="readtimepro bug fix button link"> bug fix </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="easel-outline"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://gitmind.com/app/docs/mretadeh/" title="readtimepro marketing planning button link"> marketing planning  </a></div>
-
-                  </div>
-
-                  <section class=" grid grid-cols-1 grid-rows-1 gap-0 mx-1">
-                    <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl text-center mt-2 py-2"><span style="color: green">Social Media</span> </h2>
-                  </section>
-                  <div class="transition ease-in-out delay-200 hover:-translate-y-1 footerGrid grid rounded-md grid-cols-2 md:grid-cols-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 grid-rows-2 gap-3">
-
-
-                    <div class=" transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3 shadow-xl" id="h5Palete"> <ion-icon name="logo-twitter"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://x.com/readtimepro" title="readtimepro twitter profile button"> twitter </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete"><ion-icon name="logo-instagram"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://instagram.com/readtimepro" title="readtimepro instagram button"> instagram </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="logo-youtube"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://www.youtube.com/watch?v=PfYVNzfCLV8&amp;list=PL0IFsqZDiEfslkOf1ozT-q0Bc9s_VH75i" title="readtimepro youtube button link"> youtube </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="medical-outline"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://linktr.ee/readtimepro" title="readtimepro linktree button link"> linktr.ee </a></div>
-
-                    <div class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105 py-3 px-3" id="h5Palete" classname="col-start-1 row-start-3"><ion-icon name="logo-tiktok"></ion-icon><a class="px-3 py-2" href="https://web.archive.org/web/20250420005523/https://tiktok.com/@readtimepro" title="readtimepro tiktok button link"> tiktok </a></div>
-
-                  </div>
-                </section>
 </body>
 </html> 
 
