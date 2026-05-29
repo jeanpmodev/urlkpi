@@ -74,48 +74,41 @@
           </dt>
           <dd class="mt-2 text-base/7 text-gray-600">Simplified submission of your file to the rights and licensing database.</dd>
         </div>
-              <section id="sharesection" class="content-center mx-8" style="margin-bottom: 2%; margin-top: 1%;">
-        
-        <table class="table-auto">
-          <thead>
-            <tr>
-              <th ><h6 class="text-1xl font-bold tracking-tight text-orange">Média id</h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">Published </h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">licence type ?</h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">hashcodes ? </h6></th>
-              <th><h6 class="text-1xl font-bold tracking-tight text-orange">Publish ? </h6></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td class="rounded-md">1</td>
-              <td class="rounded-md">no</td>
-              <td class="rounded-md">cc 4.0</td>
-              <td class="rounded-md">661727bdacb6d1eb7a41af51f6ac17b4fdb53e4d</td>
-              <td class="rounded-md">DO IT ⬇️</td>
-            </tr>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td>2</td>
-              <td>no</td>
-              <td>OpenGL</td>
-              <td>3332b27bae7f288afc5b5268dc72a16839d3a07a</a></td>
-              <td>⬇️</td>
-
-
-            </tr>
-            <tr class="transition ease-in-out delay-200 hover:-translate-y-1 text-lg text-rose-900 shadow-xl rounded-md hover:bg-gradient-to-r from-rose-300 via-rose-400 to-rose-400 hover:scale-105">
-              <td>3</td>
-              <td>no</td>
-              <td>MIT</td>
-              <td>2882b55eb47c66123f0181a9f055ba18393d1151</td>
-              <td>⬇️</td>
-
-            </tr>
-          </tbody>
-        </table>
-
-      </section>
       </dl>
+      <section class="content-center mx-8" style="margin-bottom: 2%; margin-top: 1%;">
+            <h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl text-center "><span style="color: blue"> alias </span> and  <span style="color: blue"> cheatsheet </span> </h2>
+        <div class="rounded-lg bg-white hover:scale-105 flex grid grid-cols-3 gap-2">
+  <div class="bg-blue-300 m-1  rounded-lg hover:scale-105">Boiler Type</div>
+  <div  class="bg-blue-300 m-1 rounded-lg hover:scale-105">Command</div>
+    <div class="bg-blue-300 m-1 rounded-lg hover:scale-105"><ion-icon name="copy-outline"></ion-icon></div>
+</div>
+
+            {% for boiler in boiler_list %}
+                    <div class="rounded-lg bg-white hover:scale-105 flex grid grid-cols-3 gap-2">
+  <div class="bg-blue-300 m-1  rounded-lg hover:scale-105">{{ boiler.boiler_type }}</div>
+  <div id="{{ boiler.id }}" data-boiler_code="{{ boiler.boiler_code }}" class="bg-blue-300 m-1 rounded-lg hover:scale-105">{{ boiler.boiler_code }}</div>
+    <div class="bg-blue-300 m-1 rounded-lg hover:scale-105"><button onclick="copyBoiler({{ boiler.id }})"><ion-icon name="copy-outline"></ion-icon></button></div>
+</div>
+            {% endfor %}
+      </section>
+
+<h2 class="text-pretty text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl text-center "><span style="color: blue"> new module </span> .  <span style="color: blue"> boilerplate </span> </h2>
+      <section>
+                 <style>
+          pre { background: #002b35 }
+        </style>
+
+
+        <pre><code>def newModule(request):
+    if request.user.is_authenticated:
+
+        context = {
+        }
+        template = loader.get_template("dash/newmodule.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')<code></pre>
+      </section>
     </div>
   </div>
 </div>
@@ -127,5 +120,16 @@
 {% include "dash/footer.html" %}   
 {% include "dash/sharesection.html" %}
 </body>
+  <script>
+      async function copyBoiler(boilerid) {
+  var boiler = document.getElementById(boilerid).dataset.boiler_code;
+  try {
+    await navigator.clipboard.writeText(boiler);
+    console.log('Console log enabled');
+  } catch (err) {
+    console.error(' no Browser Developer Mode ', err);
+  }
+}
+    </script>
 </html> 
 

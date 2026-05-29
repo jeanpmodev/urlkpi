@@ -1,14 +1,15 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task
-import subprocess
+from .models import Task, Boiler
 from django.http import HttpResponseRedirect
+from pathlib import Path
 
+import subprocess
 import os
 import pycodestyle
 import time
-from pathlib import Path
+import re
 
 
 error_amount = 0
@@ -69,9 +70,11 @@ def index(request):
 
 
 def boiler(request):
+    boiler = Boiler.objects.all()
     if request.user.is_authenticated:
 
         context = {
+            'boiler_list': boiler
         }
         template = loader.get_template("dash/boiler.html")
         return HttpResponse(template.render(context, request))
