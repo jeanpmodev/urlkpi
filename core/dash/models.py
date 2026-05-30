@@ -22,3 +22,14 @@ class Boiler(models.Model):
     def __str__(self):
         return f"{self.boiler_code} {self.boiler_code}"
 
+
+class Service(models.Model):
+    service_name = models.CharField(max_length=50)
+    service_link = models.URLField(max_length=300, blank=True)
+    service_content = models.CharField(max_length=300, default='Services')
+    service_on_content = models.CharField(max_length=300)
+    service_off_content = models.CharField(max_length=300)
+    service_status = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"{self.service_name} {self.service_status}"

@@ -18,4 +18,12 @@ def sorted_list(unordered_list):
 		time.sleep(0.2)
 	return ordered_list
 
+def check_service_firewall():
+    result = subprocess.run(
+            ['sudo', 'ufw', 'status', 'verbose'],
+            capture_output=True,
+            text=True,
+            check=True
+        )
+    return result.stdout
 
