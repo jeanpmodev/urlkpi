@@ -4,22 +4,12 @@ from django.template import loader
 from .models import Task, Boiler, Service
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
+from operational import * 
 
-import subprocess
 import os
 import pycodestyle
 import time
 import re
-
-
-def check_service_firewall():
-    result = subprocess.run(
-            ['sudo', 'ufw', 'status', 'verbose'],
-            capture_output=True,
-            text=True,
-            check=True
-        )
-    return result.stdout
 
 error_amount = 0
 list_error_files = ""
@@ -74,8 +64,6 @@ def index(request):
     context = {
         'tasks_list': tasks,
         'service_list': service,
-        'check_service_firewall': check_service_firewall
-
     }
     template = loader.get_template("dash/index.html")
     return HttpResponse(template.render(context, request))
