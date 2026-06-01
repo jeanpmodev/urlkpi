@@ -4,7 +4,7 @@ from django.template import loader
 from .models import Task, Boiler, Service
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
-from operational import * 
+from operational_micro import * 
 
 import os
 import pycodestyle
@@ -55,7 +55,6 @@ print(list_error_files)
 time.sleep(1)         
 print("Total Errors "+ str(error_amount))
 
-# refatorar funcoes de erros e impressaão 
 
 
 def index(request):

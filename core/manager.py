@@ -5,6 +5,6 @@ modules = ['boilerplates', 'copyright', 'datatracking', 'file_management', 'pep_
 
 modules_requests = ['boiler', 'copy', 'filemanager', 'integrity', 'plagiarism', 'pyerrors', 'tests', 'tracking', 'uml']
 
-servicer = ["Firewall","Database"]
+services = ["Firewall","Database"]
 
 name_servers = ['localhost']
