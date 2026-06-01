@@ -29,8 +29,12 @@ django==6.0.3
     # via local
 django-extensions==4.1
     # via local
+eralchemy==1.7.0
+    # via local
 graphviz==0.21
     # via local
+greenlet==3.5.1
+    # via sqlalchemy
 idna==3.16
     # via requests
 mwclient==0.11.0
@@ -58,7 +62,11 @@ requests-oauthlib==2.0.0
 six==1.17.0
     # via behave
     # via parse-type
+sqlalchemy==2.0.50
+    # via eralchemy
 sqlparse==0.5.5
     # via django
+typing-extensions==4.15.0
+    # via sqlalchemy
 urllib3==2.7.0
     # via requests
