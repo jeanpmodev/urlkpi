@@ -38,3 +38,14 @@ def generate_cmd_sub(subprocess_list):
 def generate_uml():
     generate_cmd_sub("python3 manage.py graph_models -a -g --dot -o uml2.dot")
     generate_cmd_sub("dot -Tpng uml2.dot -ouml2.png")
+
+
+# generate git log
+
+
+def generate_git_log():
+    git_log = generate_cmd_sub('''git log --since='2026-05-01' --until='2026-05-31' --oneline''' )
+
+
+
+
