@@ -17,29 +17,28 @@
           <h1 class="text-3xl font-bold tracking-tight text-white">Pyerrors Management </h1>
         </div>
       </header>
-      <section>
-        {% if list_error_files %}
-        <div><h1 class="text-3xl font-bold tracking-tight text-white">Error amount : {{ error_amount}} </h1>
-
-          {% for report in result %}
-          <div><h1 class="text-3xl font-bold tracking-tight text-white">Error File : {{ report }} </h1>
-
-
-            {% endfor %}
-
-            {% for spec in error_spec %}
-            <div><h1 class="text-3xl font-bold tracking-tight text-white">-> : {{ spec }} </h1>
-
-
+           {% include "dash/calendary.html" %} 
+                 <section>
+        <div class="grid grid-cols-2 gap-4">
+          {% if list_error_files %}
+          <div class="bg-blue-500 p-4">
+            {% for report in result %}
+            <p class=" font-bold tracking-tight text-white">Error File : {{ report }} <p/>
               {% endfor %}
-              {% endif %}
+            </div>
+            <div class="bg-green-500 p-4">
+              {% for spec in error_spec %}
+              <p class=" font-bold tracking-tight text-white">-> : {{ spec }} </p>
+              {% endfor %}
+            </div>
+            <div>           
+             {% endif %}   
+           </section>
+           {% include "dash/partners.html" %} 
+           {% include "dash/footer.html" %}   
+           {% include "dash/sharesection.html" %}
+         </div>
 
-            </section>
-            {% include "dash/partners.html" %} 
-            {% include "dash/footer.html" %}   
-            {% include "dash/sharesection.html" %}
-     </div>
-
-</body>
-</html> 
+       </body>
+       </html> 
 
