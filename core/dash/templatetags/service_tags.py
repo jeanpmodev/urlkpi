@@ -3,6 +3,7 @@ from operational_service import *
 
 register = template.Library()
 
+
 @register.filter
 def check_service(service_name):
     if service_name == "Firewall":

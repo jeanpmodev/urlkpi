@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Boiler , Service
+from .models import Task, Boiler, Service
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class TaskAdmin(admin.ModelAdmin):
 
 class BoilerAdmin(admin.ModelAdmin):
     list_display = ["id", "boiler_type", "boiler_code"]
-    search_fields = ['boiler_code'] 
+    search_fields = ['boiler_code']
 
 
 class ServiceAdmin(admin.ModelAdmin):

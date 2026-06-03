@@ -16,7 +16,8 @@ class Boiler(models.Model):
         ('Server Side', 'ServerSide'),
         ('Data Base', 'Database')
     ]
-    boiler_type = models.CharField(max_length=30, choices=boiler_type, default='Server Side')
+    boiler_type = models.CharField(
+        max_length=30, choices=boiler_type, default='Server Side')
     boiler_code = models.CharField(max_length=300)
 
     def __str__(self):
