@@ -18,20 +18,92 @@
         </div>
       </header>
            {% include "dash/calendary.html" %} 
-                 <section>
-        <div class="grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-4 ">
+  <div class="bg-blue-500 p-6 text-white rounded-md"><div class="max-w-md mx-auto p-6 bg-white rounded-2xl shadow-xl border border-gray-100">
+    <!-- Calendar Header -->
+    {% include "dash/widget_modules.html" %} 
+    
+  </div></div>
+  <div class="bg-blue-200 p-6 rounded-md"><div class="progress-container">
+    <div id="number-display" class="number text-[8rem] font-bold bg-gradient-to-r from-blue-700 to-orange-600 bg-clip-text text-transparent uppercase">{{ error_amount}} erros</div>
+
+    <script>
+
+      function showerros() {
+    const targetNumber = {{ error_amount}}; // The end number
+    const duration = 4000;    // Animation duration in milliseconds (2 seconds)
+
+    const numberDisplay = document.getElementById('number-display');
+
+    let startTime = null;
+
+    function counter_counter(currentTime) {
+      if (!startTime) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      
+      // Calculate current progress fraction (capped at 1)
+      const progressFraction = Math.min(timeElapsed / duration, 1);
+      
+      // 1. Update the central number
+      const currentNumber = Math.floor(progressFraction * targetNumber);
+      numberDisplay.textContent = `${currentNumber} Errors`;
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(counter_counter);
+      }
+    }
+
+    // Initialize the animation loop
+    requestAnimationFrame(counter_counter);
+  }
+
+const targetNumber = {{ error_amount}}; // The end number
+const duration = 4000;    // Animation duration in milliseconds (2 seconds)
+
+const numberDisplay = document.getElementById('number-display');
+
+let startTime = null;
+
+function counter_counter(currentTime) {
+  if (!startTime) startTime = currentTime;
+  const timeElapsed = currentTime - startTime;
+  
+  // Calculate current progress fraction (capped at 1)
+  const progressFraction = Math.min(timeElapsed / duration, 1);
+  
+  // 1. Update the central number
+  const currentNumber = Math.floor(progressFraction * targetNumber);
+  numberDisplay.textContent = `${currentNumber} Errors`;
+  
+  if (timeElapsed < duration) {
+    requestAnimationFrame(counter_counter);
+  }
+}
+
+// Initialize the animation loop
+requestAnimationFrame(counter_counter);
+</script>
+</div></div>
+</div>
+
+
+
+
+
+        <section >
+        <div class="grid grid-cols-2  mx-auto p-6 gap-4 bg-blue-200 p-6 rounded-md mt-2 overflow-y-auto mb-6 ">
           {% if list_error_files %}
-          <div class="bg-blue-500 p-4">
+          <div class="bg-blue-500 p-4 p-6 gap-4 rounded-md mt-2">
             {% for report in result %}
             <p class=" font-bold tracking-tight text-white">Error File : {{ report }} <p/>
               {% endfor %}
             </div>
-            <div class="bg-green-500 p-4">
+            <div class="bg-green-500 p-4 p-6 gap-4 rounded-md mt-2 ">
               {% for spec in error_spec %}
               <p class=" font-bold tracking-tight text-white">-> : {{ spec }} </p>
               {% endfor %}
             </div>
-            <div>           
+            </div>           
              {% endif %}   
            </section>
            {% include "dash/partners.html" %} 

@@ -5,6 +5,7 @@ from .models import Task, Boiler, Service
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
 
 import os
 import pycodestyle
@@ -55,11 +56,17 @@ print("Total Errors " + str(error_amount))
 
 
 def index(request):
+    item_list = Service.objects.all()
+    paginator = Paginator(item_list, 2)  # Show 10 items per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     tasks = Task.objects.all()
     service = Service.objects.all()
     context = {
         'tasks_list': tasks,
         'service_list': service,
+        'page_obj': page_obj,
     }
     template = loader.get_template("dash/index.html")
     return HttpResponse(template.render(context, request))
@@ -112,12 +119,18 @@ def filemanager(request):
 
 
 def pyerrors(request):
+    item_list = Service.objects.all()
+    paginator = Paginator(item_list, 1)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
     if request.user.is_authenticated:
         context = {
             'error_amount': error_amount,
             'list_error_files': list_error_files,
             'result': result,
             'error_spec': error_spec,
+            'page_obj': page_obj,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))

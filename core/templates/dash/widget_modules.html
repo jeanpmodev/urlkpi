@@ -1,0 +1,18 @@
+<div class="item-list">
+    {% for item in page_obj %}
+        <h2 class="item text-xl font-bold text-gray-800">{{ item.service_name }}</h2>
+        
+    {% empty %}
+        <p>No items found.</p>
+    {% endfor %}
+</div>
+
+<!-- Pagination Widget -->
+<div class="pagination text-gray-800">
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}"><ion-icon name="arrow-back-circle-outline"></ion-icon></a>
+    {% endif %}
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}"><ion-icon name="arrow-forward-circle-outline"></ion-icon></a>    
+    {% endif %}
+</div>
