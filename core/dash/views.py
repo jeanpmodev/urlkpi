@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task, Boiler, Service
+from .models import Task, Boiler, Service , ErrorManagement
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
@@ -56,8 +56,8 @@ print("Total Errors " + str(error_amount))
 
 
 def index(request):
-    item_list = Service.objects.all()
-    paginator = Paginator(item_list, 2)  # Show 10 items per page
+    item_list = Service.objects.all().order_by('id')
+    paginator = Paginator(item_list, 1) 
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -123,6 +123,17 @@ def pyerrors(request):
     paginator = Paginator(item_list, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    error_chrono = ErrorManagement.objects.all()
+    #error_chrono = ErrorManagement.objects.filter(error_datetime)
+    #error_chrono = ErrorManagement.objects.filter(created_at__month=6)
+    datetimesdys = {'1':0,'2':0,'3':0,'4':0,'5':0,'6':0,'7':0,'8':0,'9':0,'10':0,'11':0,'12':0,'13':0,'14':0,'15':0,'16':0,'17':0,'18':0,'19':0,'20':0,'21':0,'22':0,'23':0,'24':0,'25':0,'26':0,'27':0,'28':0,'29':0,'30':0,'31':0}
+    for item in error_chrono:
+        if (1 <= item.error_datetime.day <= 31):
+            datetimesdys[str(item.error_datetime.day)] = item.error_amount
+    for key, value in datetimesdys.items():
+        print(f"Key: {key}, Value: {value}")
+
+
 
     if request.user.is_authenticated:
         context = {
@@ -131,6 +142,8 @@ def pyerrors(request):
             'result': result,
             'error_spec': error_spec,
             'page_obj': page_obj,
+            'error_chrono': error_chrono,
+            'datetimesdys' : datetimesdys,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))

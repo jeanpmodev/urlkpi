@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 
 class Task(models.Model):
@@ -34,3 +35,14 @@ class Service(models.Model):
 
     def __str__(self):
         return f"{self.service_name} {self.service_status}"
+
+
+class ErrorManagement(models.Model):
+    error_type = [
+    ('pep8', 'pep8'),
+    ('frontend', 'frontend')
+    ]
+    error_type = models.CharField(
+        max_length=20, choices=error_type, default='pep8')
+    error_amount = models.IntegerField(default=0)
+    error_datetime = models.DateTimeField(default=timezone.now)
