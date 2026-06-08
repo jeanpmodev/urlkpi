@@ -1,63 +1,21 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task, Boiler, Service , ErrorManagement
+from .models import Task, Boiler, Service, ErrorManagement
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.utils import timezone
 
 import os
-import pycodestyle
 import time
 import re
-
-error_amount = 0
-list_error_files = ""
-file_amout = 0
-result = []
-error_spec = []
-
-print(2*"\n")
-for dirpath, dirnames, filenames in os.walk("."):
-    for filename in filenames:
-        if filename.endswith(".py"):
-            fchecker = pycodestyle.Checker(
-                dirpath+"/"+filename, show_source=False)
-            file_errors = fchecker.check_all()
-
-# quer que compacta em lista pra serializar
-
-            error_amount += file_errors
-            if file_errors != 0:
-                file_amout += 1
-                list_error_files += filename+"\n"
-                print(f"Found {file_errors} errors in "+filename)
-                print(100*"  ")
-result = list_error_files.split()
-for item in result:
-    item = script_dir = os.path.dirname(os.path.realpath(__file__))
-    error_spec = subprocess.run(
-        ["pycodestyle", item],
-        capture_output=True,  # Captures stdout and stderr
-        text=True,            # Returns string instead of bytes
-        encoding='utf-8'      # Ensures correct decoding
-    )
-    error_spec = error_spec.stdout
-    error_spec = error_spec.replace(item, "")
-    error_spec = error_spec.split('\n')
-
-print(1*"\n")
-print("Total files with erros :"+str(file_amout))
-time.sleep(1)
-print(list_error_files)
-time.sleep(1)
-print("Total Errors " + str(error_amount))
 
 
 def index(request):
     item_list = Service.objects.all().order_by('id')
-    paginator = Paginator(item_list, 1) 
+    paginator = Paginator(item_list, 1)
 
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
@@ -119,21 +77,28 @@ def filemanager(request):
 
 
 def pyerrors(request):
+    pep_data = check_pep8()
+    error_amount = pep_data["error_amount"]
+    list_error_files = pep_data["list_error_files"]
+    file_amout = pep_data["file_amout"]
+    result = pep_data["result"]
+    error_spec = pep_data["error_spec"]
+    latest_pep8_checker = ErrorManagement(
+        error_type="pep8", error_amount=error_amount, error_datetime=timezone.now())
+    latest_pep8_checker.save()
+
     item_list = Service.objects.all()
     paginator = Paginator(item_list, 1)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     error_chrono = ErrorManagement.objects.all()
-    #error_chrono = ErrorManagement.objects.filter(error_datetime)
-    #error_chrono = ErrorManagement.objects.filter(created_at__month=6)
-    datetimesdys = {'1':0,'2':0,'3':0,'4':0,'5':0,'6':0,'7':0,'8':0,'9':0,'10':0,'11':0,'12':0,'13':0,'14':0,'15':0,'16':0,'17':0,'18':0,'19':0,'20':0,'21':0,'22':0,'23':0,'24':0,'25':0,'26':0,'27':0,'28':0,'29':0,'30':0,'31':0}
+    datetimesdys = {'1': 0, '2': 0, '3': 0, '4': 0, '5': 0, '6': 0, '7': 0, '8': 0, '9': 0, '10': 0, '11': 0, '12': 0, '13': 0, '14': 0, '15': 0,
+                    '16': 0, '17': 0, '18': 0, '19': 0, '20': 0, '21': 0, '22': 0, '23': 0, '24': 0, '25': 0, '26': 0, '27': 0, '28': 0, '29': 0, '30': 0, '31': 0}
     for item in error_chrono:
         if (1 <= item.error_datetime.day <= 31):
             datetimesdys[str(item.error_datetime.day)] = item.error_amount
     for key, value in datetimesdys.items():
         print(f"Key: {key}, Value: {value}")
-
-
 
     if request.user.is_authenticated:
         context = {
@@ -143,7 +108,7 @@ def pyerrors(request):
             'error_spec': error_spec,
             'page_obj': page_obj,
             'error_chrono': error_chrono,
-            'datetimesdys' : datetimesdys,
+            'datetimesdys': datetimesdys,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))

@@ -10,6 +10,59 @@ import time
 import sqlite3
 from pathlib import Path
 import subprocess
+import os
+import pycodestyle
+
+
+def check_pep8():
+    error_amount = 0
+    list_error_files = ""
+    file_amout = 0
+    result = []
+    error_spec = []
+
+    return_dict_pep = {'error_amount': 0, 'list_error_files': '',
+                       'file_amout': 0, 'result': [], 'error_spec': []}
+
+    print(2*"\n")
+    for dirpath, dirnames, filenames in os.walk("."):
+        for filename in filenames:
+            if filename.endswith(".py"):
+                fchecker = pycodestyle.Checker(
+                    dirpath+"/"+filename, show_source=False)
+                file_errors = fchecker.check_all()
+                error_amount += file_errors
+                if file_errors != 0:
+                    file_amout += 1
+                    list_error_files += filename+"\n"
+                    # print(f"Found {file_errors} errors in "+filename)
+                    #print(100*"  ")
+    result = list_error_files.split()
+    for item in result:
+        item = script_dir = os.path.dirname(os.path.realpath(__file__))
+        error_spec = subprocess.run(
+            ["pycodestyle", item],
+            capture_output=True,  # Captures stdout and stderr
+            text=True,            # Returns string instead of bytes
+            encoding='utf-8'      # Ensures correct decoding
+        )
+        error_spec = error_spec.stdout
+        error_spec = error_spec.replace(item, "")
+        error_spec = error_spec.split('\n')
+
+    print(1*"\n")
+    print("Total files with erros :"+str(file_amout))
+    time.sleep(1)
+    # print(list_error_files)
+    time.sleep(1)
+    print("Total Errors " + str(error_amount))
+    return_dict_pep["error_amount"] = error_amount
+    return_dict_pep["list_error_files"] = list_error_files
+    return_dict_pep["file_amout"] = file_amout
+    return_dict_pep["result"] = result
+    return_dict_pep["error_spec"] = error_spec
+    return return_dict_pep
+
 
 # generate ordered list
 
@@ -44,8 +97,5 @@ def generate_uml():
 
 
 def generate_git_log():
-    git_log = generate_cmd_sub('''git log --since='2026-05-01' --until='2026-05-31' --oneline''' )
-
-
-
-
+    git_log = generate_cmd_sub(
+        '''git log --since='2026-05-01' --until='2026-05-31' --oneline''')

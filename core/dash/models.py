@@ -39,8 +39,8 @@ class Service(models.Model):
 
 class ErrorManagement(models.Model):
     error_type = [
-    ('pep8', 'pep8'),
-    ('frontend', 'frontend')
+        ('pep8', 'pep8'),
+        ('frontend', 'frontend')
     ]
     error_type = models.CharField(
         max_length=20, choices=error_type, default='pep8')

@@ -18,7 +18,7 @@ for dirpath, dirnames, filenames in os.walk("."):
                 list_error_files += filename+"\n"
                 print(f"Found {file_errors} errors in "+filename)
                 print(100*"  ")
-                #print(filename + "                      ")
+                # print(filename + "                      ")
                 # time.sleep(1)
 print(1*"\n")
 print("Total files with erros :"+str(file_amout))

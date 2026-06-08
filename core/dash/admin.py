@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Boiler, Service , ErrorManagement
+from .models import Task, Boiler, Service, ErrorManagement
 
 
 class TaskAdmin(admin.ModelAdmin):
@@ -16,7 +16,7 @@ class ServiceAdmin(admin.ModelAdmin):
 
 
 class ErrorManagementAdmin(admin.ModelAdmin):
-    list_display = ["id", "error_type", "error_amount","error_datetime"]
+    list_display = ["id", "error_type", "error_amount", "error_datetime"]
     search_fields = ['error_datetime']
 
 
