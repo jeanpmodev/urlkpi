@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task, Boiler, Service, ErrorManagement
+from .models import Task, Boiler, Service, ErrorManagement, Navbar
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
@@ -11,6 +11,8 @@ from django.utils import timezone
 import os
 import time
 import re
+
+navbar_list = Navbar.objects.all()
 
 
 def index(request):
@@ -25,6 +27,7 @@ def index(request):
         'tasks_list': tasks,
         'service_list': service,
         'page_obj': page_obj,
+        'navbar_list': navbar_list,
     }
     template = loader.get_template("dash/index.html")
     return HttpResponse(template.render(context, request))
@@ -35,7 +38,8 @@ def boiler(request):
     if request.user.is_authenticated:
 
         context = {
-            'boiler_list': boiler
+            'boiler_list': boiler,
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/boiler.html")
         return HttpResponse(template.render(context, request))
@@ -47,8 +51,19 @@ def copy(request):
     if request.user.is_authenticated:
 
         context = {
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/copy.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+def devops(request):
+    if request.user.is_authenticated:
+        context = {
+            'navbar_list': navbar_list,
+        }
+        template = loader.get_template("dash/devops.html")
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
@@ -58,6 +73,7 @@ def tracking(request):
     if request.user.is_authenticated:
 
         context = {
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/tracking.html")
         return HttpResponse(template.render(context, request))
@@ -69,6 +85,7 @@ def filemanager(request):
     if request.user.is_authenticated:
 
         context = {
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/filemanager.html")
         return HttpResponse(template.render(context, request))
@@ -109,6 +126,7 @@ def pyerrors(request):
             'page_obj': page_obj,
             'error_chrono': error_chrono,
             'datetimesdys': datetimesdys,
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))
@@ -131,6 +149,7 @@ def integrity(request):
     if request.user.is_authenticated:
 
         context = {
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/integrity.html")
         return HttpResponse(template.render(context, request))
@@ -155,10 +174,12 @@ def tests(request):
         return render(request, 'dash/tests.html', {
             'test_output': output,
             'behave_files': behave_files,
+            'navbar_list': navbar_list,
         })
     if request.user.is_authenticated:
         return render(request, 'dash/tests.html', {
             'behave_files': behave_files,
+            'navbar_list': navbar_list,
         })
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
@@ -167,6 +188,7 @@ def tests(request):
 def uml(request):
     if request.user.is_authenticated:
         context = {
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/uml.html")
         return HttpResponse(template.render(context, request))

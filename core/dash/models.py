@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils import timezone
-
+from django.utils.text import slugify
 
 class Task(models.Model):
     task_content = models.CharField(max_length=300)
@@ -46,3 +46,13 @@ class ErrorManagement(models.Model):
         max_length=20, choices=error_type, default='pep8')
     error_amount = models.IntegerField(default=0)
     error_datetime = models.DateTimeField(default=timezone.now)
+
+class Navbar(models.Model):
+    btn_name = models.CharField(max_length=100)
+    slug = models.SlugField(unique=True, blank=True)
+    icon = models.CharField(max_length=50, default='bulb-outline')
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)     
+        super().save(*args, **kwargs)
