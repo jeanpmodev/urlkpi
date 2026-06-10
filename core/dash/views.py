@@ -16,6 +16,7 @@ navbar_list = Navbar.objects.all()
 
 
 def index(request):
+    current_url = request.build_absolute_uri()
     item_list = Service.objects.all().order_by('id')
     paginator = Paginator(item_list, 1)
 
@@ -28,6 +29,7 @@ def index(request):
         'service_list': service,
         'page_obj': page_obj,
         'navbar_list': navbar_list,
+        'current_url': current_url,
     }
     template = loader.get_template("dash/index.html")
     return HttpResponse(template.render(context, request))
@@ -35,11 +37,13 @@ def index(request):
 
 def boiler(request):
     boiler = Boiler.objects.all()
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'boiler_list': boiler,
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/boiler.html")
         return HttpResponse(template.render(context, request))
@@ -48,10 +52,11 @@ def boiler(request):
 
 
 def copy(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
-
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/copy.html")
         return HttpResponse(template.render(context, request))
@@ -60,8 +65,10 @@ def copy(request):
 
 def devops(request):
     if request.user.is_authenticated:
+        current_url = request.build_absolute_uri()
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/devops.html")
         return HttpResponse(template.render(context, request))
@@ -70,10 +77,12 @@ def devops(request):
 
 
 def tracking(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/tracking.html")
         return HttpResponse(template.render(context, request))
@@ -82,10 +91,12 @@ def tracking(request):
 
 
 def filemanager(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/filemanager.html")
         return HttpResponse(template.render(context, request))
@@ -94,6 +105,7 @@ def filemanager(request):
 
 
 def pyerrors(request):
+    current_url = request.build_absolute_uri()
     pep_data = check_pep8()
     error_amount = pep_data["error_amount"]
     list_error_files = pep_data["list_error_files"]
@@ -127,6 +139,7 @@ def pyerrors(request):
             'error_chrono': error_chrono,
             'datetimesdys': datetimesdys,
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))
@@ -135,9 +148,12 @@ def pyerrors(request):
 
 
 def plagiarism(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
+            'current_url': current_url,
+            'navbar_list': navbar_list,
         }
         template = loader.get_template("dash/plagiarism.html")
         return HttpResponse(template.render(context, request))
@@ -146,10 +162,12 @@ def plagiarism(request):
 
 
 def integrity(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/integrity.html")
         return HttpResponse(template.render(context, request))
@@ -158,6 +176,7 @@ def integrity(request):
 
 
 def tests(request):
+    current_url = request.build_absolute_uri()
     behave_folder = Path('features/')
     behave_files = [file.name for file in behave_folder.iterdir()
                     if file.is_file()]
@@ -175,20 +194,24 @@ def tests(request):
             'test_output': output,
             'behave_files': behave_files,
             'navbar_list': navbar_list,
+            'current_url': current_url,
         })
     if request.user.is_authenticated:
         return render(request, 'dash/tests.html', {
             'behave_files': behave_files,
             'navbar_list': navbar_list,
+            'current_url': current_url,
         })
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
 
 def uml(request):
+    current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
         context = {
             'navbar_list': navbar_list,
+            'current_url': current_url,
         }
         template = loader.get_template("dash/uml.html")
         return HttpResponse(template.render(context, request))

@@ -51,6 +51,9 @@ class Navbar(models.Model):
     btn_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     icon = models.CharField(max_length=50, default='bulb-outline')
+    title = models.CharField(max_length=100, default='Management')
+
+
 
     def save(self, *args, **kwargs):
         if not self.slug:
