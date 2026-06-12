@@ -13,7 +13,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Navbar',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                                           primary_key=True, serialize=False, verbose_name='ID')),
                 ('btn_name', models.CharField(max_length=100)),
                 ('slug', models.SlugField(blank=True, unique=True)),
                 ('icon', models.CharField(max_length=50)),

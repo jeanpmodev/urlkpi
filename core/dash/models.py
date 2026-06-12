@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
 
+
 class Task(models.Model):
     task_content = models.CharField(max_length=300)
     pub_date = models.DateTimeField("date published")
@@ -47,15 +48,14 @@ class ErrorManagement(models.Model):
     error_amount = models.IntegerField(default=0)
     error_datetime = models.DateTimeField(default=timezone.now)
 
+
 class Navbar(models.Model):
     btn_name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     icon = models.CharField(max_length=50, default='bulb-outline')
     title = models.CharField(max_length=100, default='Management')
 
-
-
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)     
+            self.slug = slugify(self.title)
         super().save(*args, **kwargs)

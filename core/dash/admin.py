@@ -26,6 +26,7 @@ class ErrorManagementAdmin(admin.ModelAdmin):
     list_display = ["id", "error_type", "error_amount", "error_datetime"]
     search_fields = ['error_datetime']
 
+
 class NavbarAdmin(admin.ModelAdmin):
     list_display = ["id", "btn_name", "slug", "icon"]
     prepopulated_fields = {"slug": ("btn_name",)}
@@ -36,4 +37,3 @@ admin.site.register(Boiler, BoilerAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(ErrorManagement, ErrorManagementAdmin)
 admin.site.register(Navbar, NavbarAdmin)
-
