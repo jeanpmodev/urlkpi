@@ -8,3 +8,5 @@ modules_requests = ['boiler', 'copy', 'filemanager', 'integrity', 'plagiarism', 
 services = ["Firewall","Database"]
 
 name_servers = ['localhost']
+
+url_routes = ['boilerplate','copyright','file-management','software-integrity','plagiarism','pep-errors','tests','datatracking','uml-management','devops']
