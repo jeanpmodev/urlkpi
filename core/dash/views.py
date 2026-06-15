@@ -217,3 +217,15 @@ def uml(request):
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+def metadata(request):
+    current_url = request.build_absolute_uri()
+    if request.user.is_authenticated:
+        context = {
+            'navbar_list': navbar_list,
+            'current_url': current_url,
+        }
+        template = loader.get_template("dash/metadata.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')

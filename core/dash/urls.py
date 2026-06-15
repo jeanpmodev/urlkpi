@@ -14,4 +14,5 @@ urlpatterns = [
     path("datatracking/", views.tracking, name="tracking"),
     path("uml-management/", views.uml, name="uml"),
     path("devops/", views.devops, name="devops"),
+    path("metadata/", views.devops, name="metadata"),
 ]
