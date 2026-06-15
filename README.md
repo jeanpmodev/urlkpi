@@ -1,5 +1,7 @@
 # Django-octo dev tools 
 
+![demo route](https://github.com/jeanpmodev/urlkpi/blob/master/demo_route.gif)
+
 This project is intended to be useful in my development of other software.
 
 The concept involves understanding the difference between the mindset of a programmer and a developer.
@@ -17,6 +19,8 @@ The concept involves understanding the difference between the mindset of a progr
 * tests
 * copyright
 * plagiarism
+* 
+* metadata
 
 there is a dedicated folder for each module containing readme file, design features and goals.
 
@@ -44,10 +48,6 @@ At this time, the sending of data and urls routes - model- view - template - dat
 
 At this point, something must be done to differentiate the process, such as automating, managing, viewing quantitative data in graphs, and concluding that there is a module that provides benefits.
 
-
-<video src="demo_route.webm" width="600" controls autoplay loop muted>
-  Your browser does not support the video tag.
-</video>
 
 
 
