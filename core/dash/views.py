@@ -63,6 +63,7 @@ def copy(request):
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
+
 def devops(request):
     if request.user.is_authenticated:
         current_url = request.build_absolute_uri()
@@ -218,6 +219,7 @@ def uml(request):
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
+
 def metadata(request):
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
@@ -226,6 +228,27 @@ def metadata(request):
             'current_url': current_url,
         }
         template = loader.get_template("dash/metadata.html")
+        return HttpResponse(template.render(context, request))
+    else:
+        return HttpResponseRedirect('http://127.0.0.1:8000/admin')
+
+
+def cybersecurity(request):
+    current_url = request.build_absolute_uri()
+    if request.user.is_authenticated:
+        try:
+            output = subprocess.run(
+                "rye run pip-audit", shell=True, capture_output=True, text=True)
+        except subprocess.CalledProcessError as e:
+            output = e.output
+        context = {
+            'navbar_list': navbar_list,
+            'current_url': current_url,
+            'stdout': output.stdout,
+            'stderr': output.stderr,
+            'return_code': output.returncode
+        }
+        template = loader.get_template("dash/cybersecurity.html")
         return HttpResponse(template.render(context, request))
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')

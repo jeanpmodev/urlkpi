@@ -21,6 +21,7 @@ The concept involves understanding the difference between the mindset of a progr
 * plagiarism
 * devops
 * metadata
+* cybersecurity
 
 there is a dedicated folder for each module containing readme file, design features and goals.
 

@@ -12,6 +12,8 @@ from pathlib import Path
 import subprocess
 import os
 import pycodestyle
+import re
+import asyncio
 
 
 def check_pep8():
@@ -99,3 +101,12 @@ def generate_uml():
 def generate_git_log():
     git_log = generate_cmd_sub(
         '''git log --since='2026-05-01' --until='2026-05-31' --oneline''')
+
+
+def generate_list_of_packages():
+    import importlib.metadata
+    installed_packages = sorted([dist.name for dist in importlib.metadata.distributions()])
+    print(installed_packages)
+    return installed_packages
+
+
