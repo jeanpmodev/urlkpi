@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task, Boiler, Service, ErrorManagement, Navbar
+from .models import Task, Boiler, Service, ErrorManagement, Navbar , CveManagement
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
@@ -241,6 +241,9 @@ def cybersecurity(request):
                 "rye run pip-audit", shell=True, capture_output=True, text=True)
         except subprocess.CalledProcessError as e:
             output = e.output
+
+    for line in output.stdout:
+        print(f"Captured: {line.strip()}")
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,

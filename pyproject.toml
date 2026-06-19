@@ -1,12 +1,12 @@
 [project]
 name = "local"
-version = "0.2.1"
+version = "0.2.2"
 description = "I don't know what I'm doing"
 authors = [
     { name = "jeanpmodev", email = "jeanpmodev@gmail.com" }
 ]
 dependencies = [
-    "django>=6.0.3",
+    "django==6.0.5",
     "pycodestyle>=2.14.0",
     "django-extensions>=4.1",
     "pyparsing>=3.3.2",

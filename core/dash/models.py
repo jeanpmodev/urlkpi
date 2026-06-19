@@ -59,3 +59,11 @@ class Navbar(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+
+class CveManagement(models.Model):
+    cve_code = models.CharField(max_length=100)
+    to_solve = models.URLField(max_length=300, blank=True)
+    cve_amount = models.IntegerField(default=0)
+    pkg_amount = models.IntegerField(default=0)
+    cve_datetime = models.DateTimeField(default=timezone.now)
