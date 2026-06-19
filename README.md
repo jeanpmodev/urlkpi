@@ -8,6 +8,20 @@ The concept involves understanding the difference between the mindset of a progr
 
 🚫 The use of artificial intelligence is prohibited in the development of this repository.
 
+django-octo provides a set of essential solutions for Django developers.
+
+## about the market share of Django-Octo
+Large global platforms use Django as a fundamental part of their technology stacks, operating at very high traffic levels: 
+* Instagram: Uses the Django framework in one of its largest backends. 
+* Spotify: Uses the framework for several of its web pages and internal services. 
+* Pinterest: Adopts Django for a large part of its core web platform. 
+* YouTube: Uses the framework for some of its interfaces and data services. 
+* Disqus: The comment platform is entirely based on Django. 
+* NASA: Employs Django on several of its official websites, such as the NASA website.
+
+In the web framework market across all technologies, Django commonly vies for global leadership (ranging from 32% to 33%) with Java's Spring Framework.
+
+
 ## Modules :
 
 * pep errors
