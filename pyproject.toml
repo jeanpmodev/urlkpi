@@ -1,6 +1,6 @@
 [project]
 name = "local"
-version = "0.2.3"
+version = "0.2.4"
 description = "I don't know what I'm doing"
 authors = [
     { name = "jeanpmodev", email = "jeanpmodev@gmail.com" }
@@ -17,6 +17,7 @@ dependencies = [
     "py-w3c>=0.3.1",
     "eralchemy>=1.7.0",
     "selenium>=4.44.0",
+    "gixy-ng>=0.2.49",
 ]
 readme = "README.md"
 requires-python = ">= 3.8"

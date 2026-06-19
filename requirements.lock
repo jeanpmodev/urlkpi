@@ -24,6 +24,8 @@ charset-normalizer==3.4.7
     # via requests
 colorama==0.4.6
     # via behave
+configargparse==1.7.5
+    # via gixy-ng
 cucumber-expressions==20.0.0
     # via behave
 cucumber-tag-expressions==10.0.0
@@ -35,6 +37,8 @@ django-extensions==4.1
     # via local
 eralchemy==1.7.0
     # via local
+gixy-ng==0.2.49
+    # via local
 graphviz==0.21
     # via local
 greenlet==3.5.2
@@ -44,8 +48,14 @@ h11==0.16.0
 idna==3.18
     # via requests
     # via trio
+jinja2==3.1.6
+    # via gixy-ng
+markupsafe==3.0.3
+    # via jinja2
 mwclient==0.11.0
     # via local
+ngxparse==0.5.16
+    # via gixy-ng
 oauthlib==3.3.1
     # via requests-oauthlib
 outcome==1.3.0.post0
