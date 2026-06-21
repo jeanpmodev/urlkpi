@@ -65,4 +65,8 @@ At this point, something must be done to differentiate the process, such as auto
 
 
 
+### Would you like to become a financial supporter of the project?
+
+[Buy me a coffee](https://buymeacoffee.com/django_octo)
+[GitHub Sponsor](https://github.com/sponsors/jeanpmodev)
 
