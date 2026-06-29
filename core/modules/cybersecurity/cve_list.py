@@ -17,7 +17,10 @@ def run_rye_pip_audit():
         # We parse stdout regardless of the exit code if data is present.
         if not result.stdout.strip():
             if result.returncode != 0:
-                print(f"Error running pip-audit: {result.stderr}", file=sys.stderr)
+                print(
+                    f"Error running pip-audit: {result.stderr}",
+                    file=sys.stderr,
+                )
             return []
 
         # Parse the JSON payload
@@ -25,7 +28,8 @@ def run_rye_pip_audit():
         vulnerabilities_list = []
 
         # Extract package names and PYSEC codes from the JSON structure
-        # Note: Depending on your pip-audit version, the root might be a list or a dict containing a 'dependencies' key.
+        # Note: Depending on your pip-audit version, the root might be a
+        # list or a dict containing a 'dependencies' key.
         dependencies = (
             audit_data.get("dependencies", [])
             if isinstance(audit_data, dict)
@@ -39,7 +43,8 @@ def run_rye_pip_audit():
             for vuln in vulns:
                 vuln_id = vuln.get("id", "")
                 # Filter specifically for PYSEC identifiers if needed,
-                # though pip-audit primarily returns OSV/CVE/GHSA/PYSEC IDs here.
+                # though pip-audit primarily returns OSV/CVE/GHSA/PYSEC
+                # IDs here.
                 if vuln_id.startswith("PYSEC-") or vuln_id:
                     vulnerabilities_list.append(
                         {"package": package_name, "vuln_id": vuln_id}
@@ -54,7 +59,10 @@ def run_rye_pip_audit():
         )
         return []
     except json.JSONDecodeError:
-        print("Error: Failed to parse JSON output from pip-audit.", file=sys.stderr)
+        print(
+            "Error: Failed to parse JSON output from pip-audit.",
+            file=sys.stderr,
+        )
         return []
 
 

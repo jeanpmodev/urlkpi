@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Task, Boiler, Service, ErrorManagement, Navbar
+from django.db import models
+from django.forms import TextInput, Textarea
+from .models import Task, Boiler, Service, ErrorManagement, Navbar, Content
 
 
 @admin.action(description="the selected tasks as completed.")
@@ -31,9 +33,18 @@ class NavbarAdmin(admin.ModelAdmin):
     list_display = ["id", "btn_name", "slug", "icon"]
     prepopulated_fields = {"slug": ("btn_name",)}
 
+class ContentAdmin(admin.ModelAdmin):
+    list_display = ["content_title", "content_subtitle", "wizard_1", "wizard_2", "wizard_3", "wizard_4"]
+    search_fields = ['content_title']
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows': 5, 'cols': 35})},
+    }    
+
 
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Boiler, BoilerAdmin)
 admin.site.register(Service, ServiceAdmin)
 admin.site.register(ErrorManagement, ErrorManagementAdmin)
 admin.site.register(Navbar, NavbarAdmin)
+admin.site.register(Content, ContentAdmin)
+

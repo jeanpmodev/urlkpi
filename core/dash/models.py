@@ -67,3 +67,17 @@ class CveManagement(models.Model):
     cve_amount = models.IntegerField(default=0)
     pkg_amount = models.IntegerField(default=0)
     cve_datetime = models.DateTimeField(default=timezone.now)
+
+
+class Content(models.Model):
+    content_title = models.CharField(max_length=100, default="title")
+    content_subtitle = models.CharField(max_length=400, default="content")
+    content_1 = models.TextField(max_length=400, default="content")
+    content_2 = models.TextField(max_length=400, default="content")
+    content_3 = models.TextField(max_length=400, default="content")
+    content_4 = models.TextField(max_length=400, default="content")
+    wizard_1 = models.CharField(max_length=50, default='wizard 1')
+    wizard_2 = models.CharField(max_length=50, default='wizard 2')
+    wizard_3 = models.CharField(max_length=50, default='wizard 3')
+    wizard_4 = models.CharField(max_length=50, default='wizard 4')
+

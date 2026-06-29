@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
-from .models import Task, Boiler, Service, ErrorManagement, Navbar , CveManagement
+from .models import Task, Boiler, Service, ErrorManagement, Navbar , CveManagement, Content
 from django.http import HttpResponseRedirect, JsonResponse
 from pathlib import Path
 from operational_micro import *
@@ -38,12 +38,14 @@ def index(request):
 def boiler(request):
     boiler = Boiler.objects.all()
     current_url = request.build_absolute_uri()
+    content = Content.objects.get(content_title='Boiler Plate') 
     if request.user.is_authenticated:
 
         context = {
             'boiler_list': boiler,
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/boiler.html")
         return HttpResponse(template.render(context, request))
@@ -53,10 +55,12 @@ def boiler(request):
 
 def copy(request):
     current_url = request.build_absolute_uri()
+    content = Content.objects.get(content_title='Copyright Faster') 
     if request.user.is_authenticated:
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/copy.html")
         return HttpResponse(template.render(context, request))
@@ -65,11 +69,13 @@ def copy(request):
 
 
 def devops(request):
+    content = Content.objects.get(content_title='DevOps Center') 
     if request.user.is_authenticated:
         current_url = request.build_absolute_uri()
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/devops.html")
         return HttpResponse(template.render(context, request))
@@ -78,12 +84,14 @@ def devops(request):
 
 
 def tracking(request):
+    content = Content.objects.get(content_title='Data Tracking') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/tracking.html")
         return HttpResponse(template.render(context, request))
@@ -92,12 +100,14 @@ def tracking(request):
 
 
 def filemanager(request):
+    content = Content.objects.get(content_title='File Manager') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/filemanager.html")
         return HttpResponse(template.render(context, request))
@@ -106,6 +116,7 @@ def filemanager(request):
 
 
 def pyerrors(request):
+    content = Content.objects.get(content_title='Detect Pep Errors') 
     current_url = request.build_absolute_uri()
     pep_data = check_pep8()
     error_amount = pep_data["error_amount"]
@@ -141,6 +152,7 @@ def pyerrors(request):
             'datetimesdys': datetimesdys,
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/pyerrors.html")
         return HttpResponse(template.render(context, request))
@@ -149,12 +161,14 @@ def pyerrors(request):
 
 
 def plagiarism(request):
+    content = Content.objects.get(content_title='Detect Plagiarism') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'current_url': current_url,
             'navbar_list': navbar_list,
+            'content': content,
         }
         template = loader.get_template("dash/plagiarism.html")
         return HttpResponse(template.render(context, request))
@@ -163,12 +177,14 @@ def plagiarism(request):
 
 
 def integrity(request):
+    content = Content.objects.get(content_title='System integrity') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
 
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/integrity.html")
         return HttpResponse(template.render(context, request))
@@ -177,6 +193,7 @@ def integrity(request):
 
 
 def tests(request):
+    content = Content.objects.get(content_title='Running Tests') 
     current_url = request.build_absolute_uri()
     behave_folder = Path('features/')
     behave_files = [file.name for file in behave_folder.iterdir()
@@ -196,23 +213,27 @@ def tests(request):
             'behave_files': behave_files,
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         })
     if request.user.is_authenticated:
         return render(request, 'dash/tests.html', {
             'behave_files': behave_files,
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         })
     else:
         return HttpResponseRedirect('http://127.0.0.1:8000/admin')
 
 
 def uml(request):
+    content = Content.objects.get(content_title='Software Engineering') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/uml.html")
         return HttpResponse(template.render(context, request))
@@ -221,11 +242,13 @@ def uml(request):
 
 
 def metadata(request):
+    content = Content.objects.get(content_title='Metadata View') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
         context = {
             'navbar_list': navbar_list,
             'current_url': current_url,
+            'content': content,
         }
         template = loader.get_template("dash/metadata.html")
         return HttpResponse(template.render(context, request))
@@ -234,6 +257,7 @@ def metadata(request):
 
 
 def cybersecurity(request):
+    content = Content.objects.get(content_title='Vulnerability Identification') 
     current_url = request.build_absolute_uri()
     if request.user.is_authenticated:
         try:
@@ -249,7 +273,8 @@ def cybersecurity(request):
             'current_url': current_url,
             'stdout': output.stdout,
             'stderr': output.stderr,
-            'return_code': output.returncode
+            'return_code': output.returncode,
+            'content': content,
         }
         template = loader.get_template("dash/cybersecurity.html")
         return HttpResponse(template.render(context, request))
