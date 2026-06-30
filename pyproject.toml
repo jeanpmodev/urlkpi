@@ -1,5 +1,5 @@
 [project]
-name = "local"
+name = "django-octo"
 version = "0.2.4"
 description = "I don't know what I'm doing"
 authors = [
