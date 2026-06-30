@@ -65,30 +65,38 @@ At this point, something must be done to differentiate the process, such as auto
 
 ## Installation
 
-* Install rye environment manager
-```curl -sSf https://rye.astral.sh/get | bash
+* Open the terminal and Install rye environment manager
+```
+curl -sSf https://rye.astral.sh/get | bash
 ``` 
 * Clone the django-octo repository
 
-```git clone https://github.com/jeanpmodev/django-octo.git
+```
+git clone https://github.com/jeanpmodev/django-octo.git
 ``` 
 * Navigate to django-octo folder
-```cd django-octo/
+```
+cd django-octo/
 ``` 
 * Active rye 
-```rye run
+```
+rye run
 ``` 
 * Active environment
-```. .venv/bin/activate 
+```
+. .venv/bin/activate 
 ``` 
 * Install dependencies 
-```rye sync
+```
+rye sync
 ```
 * Navigate to core folder
-```cd core/
+```
+cd core/
 ```  
 * Start application
-```python3 manage.py runserver
+```
+python3 manage.py runserver
 ``` 
 
 Open your browser and access the URL http://127.0.0.1:8000/admin/
@@ -96,7 +104,7 @@ Open your browser and access the URL http://127.0.0.1:8000/admin/
 * Username: admin
 * Password: admin
 
-Django-octo is a program for administrators; it requires the sudo password to view features such as firewall checks.
+#### Django-octo is a program for administrators; it requires the sudo password to view features such as firewall checks.
 
 After accessing the URL http://127.0.0.1:8000/dash/, open the terminal and enter your sudo password to gain access.
 
